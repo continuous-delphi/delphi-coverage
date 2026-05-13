@@ -1,0 +1,11 @@
+ Start         Length     Name                   Class
+ 0001:00001000 00010000H .text                  CODE
+
+ Line numbers for MyApp.Core(source\MyApp.Core.pas) segment .text
+
+    10 0001:00001000    11 0001:00001010    12 0001:00001020    13 0001:00001030
+    14 0001:00001040    15 0001:00001050
+
+ Line numbers for MyApp.Utils(source\MyApp.Utils.pas) segment .text
+
+    20 0001:00002000    21 0001:00002010    22 0001:00002020
