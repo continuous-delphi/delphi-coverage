@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="18" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-05-12" time="21:53:18">
+  <environment user="Darian" clr-version="9.0.14" user-domain="DESKTOP-FF8590M" cwd="C:\code\delphi-coverage" nunit-version="2.5.8.0" os-version="10.0.26200" platform="Microsoft Windows 11 Pro|C:\WINDOWS|\Device\Harddisk0\Partition3" machine-name="DESKTOP-FF8590M" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="3.7945" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\code\delphi-coverage\tests\pwsh\delphi-coverage.Badge.Tests.ps1" executed="True" result="Success" success="True" time="0.4403" asserts="0" description="C:\code\delphi-coverage\tests\pwsh\delphi-coverage.Badge.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="delphi-coverage -- badge generation" executed="True" result="Success" success="True" time="0.1933" asserts="0" description="delphi-coverage -- badge generation">
+            <results>
+              <test-suite type="TestFixture" name="delphi-coverage -- badge generation.badge color thresholds" executed="True" result="Success" success="True" time="0.1256" asserts="0" description="delphi-coverage -- badge generation.badge color thresholds">
+                <results>
+                  <test-case description="returns green for 80% and above" name="delphi-coverage -- badge generation.badge color thresholds.returns green for 80% and above" time="0.0975" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="returns yellow for 60-79%" name="delphi-coverage -- badge generation.badge color thresholds.returns yellow for 60-79%" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="returns red for below 60%" name="delphi-coverage -- badge generation.badge color thresholds.returns red for below 60%" time="0.0051" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="delphi-coverage -- badge generation.SVG badge file" executed="True" result="Success" success="True" time="0.1524" asserts="0" description="delphi-coverage -- badge generation.SVG badge file">
+                <results>
+                  <test-case description="generates an SVG file" name="delphi-coverage -- badge generation.SVG badge file.generates an SVG file" time="0.0221" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="delphi-coverage -- badge generation.Shields.io JSON badge file" executed="True" result="Success" success="True" time="0.1797" asserts="0" description="delphi-coverage -- badge generation.Shields.io JSON badge file">
+                <results>
+                  <test-case description="generates valid Shields.io JSON" name="delphi-coverage -- badge generation.Shields.io JSON badge file.generates valid Shields.io JSON" time="0.022" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\code\delphi-coverage\tests\pwsh\delphi-coverage.Threshold.Tests.ps1" executed="True" result="Success" success="True" time="0.1188" asserts="0" description="C:\code\delphi-coverage\tests\pwsh\delphi-coverage.Threshold.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="delphi-coverage -- coverage parsing" executed="True" result="Success" success="True" time="0.0781" asserts="0" description="delphi-coverage -- coverage parsing">
+            <results>
+              <test-suite type="TestFixture" name="delphi-coverage -- coverage parsing.Cobertura XML parsing" executed="True" result="Success" success="True" time="0.0433" asserts="0" description="delphi-coverage -- coverage parsing.Cobertura XML parsing">
+                <results>
+                  <test-case description="extracts coverage percent from Cobertura XML" name="delphi-coverage -- coverage parsing.Cobertura XML parsing.extracts coverage percent from Cobertura XML" time="0.0341" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="delphi-coverage -- coverage parsing.threshold logic" executed="True" result="Success" success="True" time="0.0731" asserts="0" description="delphi-coverage -- coverage parsing.threshold logic">
+                <results>
+                  <test-case description="passes when coverage meets threshold" name="delphi-coverage -- coverage parsing.threshold logic.passes when coverage meets threshold" time="0.0067" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="fails when coverage is below threshold" name="delphi-coverage -- coverage parsing.threshold logic.fails when coverage is below threshold" time="0.0034" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="passes when threshold is 0 (disabled)" name="delphi-coverage -- coverage parsing.threshold logic.passes when threshold is 0 (disabled)" time="0.008" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="passes when coverage exactly matches threshold" name="delphi-coverage -- coverage parsing.threshold logic.passes when coverage exactly matches threshold" time="0.0073" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\code\delphi-coverage\tests\pwsh\delphi-coverage.Validation.Tests.ps1" executed="True" result="Success" success="True" time="2.2869" asserts="0" description="C:\code\delphi-coverage\tests\pwsh\delphi-coverage.Validation.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="delphi-coverage -- validation" executed="True" result="Success" success="True" time="2.2568" asserts="0" description="delphi-coverage -- validation">
+            <results>
+              <test-suite type="TestFixture" name="delphi-coverage -- validation.version info" executed="True" result="Success" success="True" time="0.4709" asserts="0" description="delphi-coverage -- validation.version info">
+                <results>
+                  <test-case description="exits with code 0 for -Version" name="delphi-coverage -- validation.version info.exits with code 0 for -Version" time="0.2399" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="outputs JSON for -Version -Format json" name="delphi-coverage -- validation.version info.outputs JSON for -Version -Format json" time="0.2275" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="delphi-coverage -- validation.missing files" executed="True" result="Success" success="True" time="1.3752" asserts="0" description="delphi-coverage -- validation.missing files">
+                <results>
+                  <test-case description="exits with code 4 when test executable not found" name="delphi-coverage -- validation.missing files.exits with code 4 when test executable not found" time="0.4517" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="exits with code 4 when MAP file not found" name="delphi-coverage -- validation.missing files.exits with code 4 when MAP file not found" time="0.4341" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="delphi-coverage -- validation.MAP file validation" executed="True" result="Success" success="True" time="1.8143" asserts="0" description="delphi-coverage -- validation.MAP file validation">
+                <results>
+                  <test-case description="exits with code 2 when MAP file has no line number info" name="delphi-coverage -- validation.MAP file validation.exits with code 2 when MAP file has no line number info" time="0.4362" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="delphi-coverage -- validation.invalid formats" executed="True" result="Success" success="True" time="2.2534" asserts="0" description="delphi-coverage -- validation.invalid formats">
+                <results>
+                  <test-case description="exits with code 2 for an invalid output format" name="delphi-coverage -- validation.invalid formats.exits with code 2 for an invalid output format" time="0.4364" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\code\delphi-coverage\tests\pwsh\Invoke-ScriptAnalyzer.Tests.ps1" executed="True" result="Success" success="True" time="0.9485" asserts="0" description="C:\code\delphi-coverage\tests\pwsh\Invoke-ScriptAnalyzer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PSScriptAnalyzer tests \" executed="True" result="Success" success="True" time="0.9176" asserts="0" description="PSScriptAnalyzer tests \">
+            <results>
+              <test-case description="reports no errors" name="PSScriptAnalyzer tests \.reports no errors" time="0.0129" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="reports no warnings" name="PSScriptAnalyzer tests \.reports no warnings" time="0.0024" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
