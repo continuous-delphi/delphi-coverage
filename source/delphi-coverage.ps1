@@ -144,7 +144,7 @@ $ExitFileNotFound     = 4
 $ExitCoverageFailed   = 5
 $ExitThresholdNotMet  = 6
 
-$script:ToolVersion = '0.1.0'
+$script:ToolVersion = '1.0.0'
 
 # -----------------------------------------------------------------------------
 # Version info
