@@ -6,6 +6,7 @@
 [![CI](https://github.com/continuous-delphi/delphi-coverage/actions/workflows/ci.yml/badge.svg)](https://github.com/continuous-delphi/delphi-coverage/actions/workflows/ci.yml)
 [![GitHub Release](https://img.shields.io/github/v/release/continuous-delphi/delphi-coverage?display_name=release)](https://github.com/continuous-delphi/delphi-coverage/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/continuous-delphi/delphi-coverage)
 [![Continuous Delphi](https://img.shields.io/badge/org-continuous--delphi-red)](https://github.com/continuous-delphi)
 
 PowerShell code coverage orchestrator for Delphi projects, wrapping coverage engines behind a unified interface.
