@@ -3,6 +3,8 @@
 ![delphi-coverage logo](https://continuous-delphi.github.io/assets/logos/delphi-coverage-480x270.png)
 
 [![Delphi](https://img.shields.io/badge/delphi-red)](https://www.embarcadero.com/products/delphi)
+[![CI](https://github.com/continuous-delphi/delphi-coverage/actions/workflows/ci.yml/badge.svg)](https://github.com/continuous-delphi/delphi-coverage/actions/workflows/ci.yml)
+[![GitHub Release](https://img.shields.io/github/v/release/continuous-delphi/delphi-coverage?display_name=release)](https://github.com/continuous-delphi/delphi-coverage/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Continuous Delphi](https://img.shields.io/badge/org-continuous--delphi-red)](https://github.com/continuous-delphi)
 
