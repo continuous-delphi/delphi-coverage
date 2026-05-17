@@ -398,17 +398,6 @@ Requires PowerShell 7+, Pester 5.7+, and PSScriptAnalyzer.
 
 ---
 
-## Maturity
-
-This repository is currently `incubator` and is under active development.
-It will graduate to `stable` once:
-
-- At least one downstream consumer exists.
-
-Until graduation, breaking changes may occur.
-
----
-
 ## Continuous-Delphi
 
 This tool is part of the [Continuous-Delphi](https://github.com/continuous-delphi)
