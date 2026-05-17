@@ -50,7 +50,6 @@ and the newer PowerShell 7+ (`pwsh`).
 - Wraps coverage engines behind a unified, documented interface
 - Coverage threshold enforcement with exit code 6 on failure
 - Badge generation (self-contained SVG or Shields.io JSON endpoint)
-- Coverage threshold enforcement -- fail the build if coverage drops below a minimum
 - MAP file validation (detects segment-only maps before running)
 - Structured JSON output via `-OutputFile` for CI integration
 - Multiple source directories via comma-separated `-SourceDir`

@@ -3,7 +3,7 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-Describe 'PSScriptAnalyzer tests \' {
+Describe 'PSScriptAnalyzer tests' {
 
   BeforeAll {
     # Verify PSScriptAnalyzer is available
@@ -18,7 +18,7 @@ Describe 'PSScriptAnalyzer tests \' {
 
     $script:Findings = Invoke-ScriptAnalyzer `
       -Path $scriptPath `
-      -Recurse `
+      -Recurse
   }
 
   It 'reports no errors' {

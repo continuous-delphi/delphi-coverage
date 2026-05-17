@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [1.1.0] Unreleased
+## [1.1.0] 2026-05-17
 
 - added `covdb` output format for radCodeCoverage SQLite database output (#1)
 - `covdb` produces a `coverage.db` file with metadata, files, and lines tables
