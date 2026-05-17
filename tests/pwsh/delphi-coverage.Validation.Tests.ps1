@@ -61,6 +61,12 @@ Describe 'delphi-coverage -- validation' {
             $LASTEXITCODE | Should -Be 2
         }
 
+        It 'exits with code 2 when covdb format used without radCodeCoverage engine' {
+            $mapFile = Join-Path $script:FixturesPath 'sample.map'
+            & pwsh -NoProfile -File $script:ScriptPath -Execute $script:ScriptPath -MapFile $mapFile -Formats 'covdb' -Engine DelphiCodeCoverage 2>$null
+            $LASTEXITCODE | Should -Be 2
+        }
+
     }
 
 }
