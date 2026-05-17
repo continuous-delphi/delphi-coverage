@@ -62,7 +62,7 @@ and the newer PowerShell 7+ (`pwsh`).
 | Engine | Status | Notes |
 |--------|--------|-------|
 | `DelphiCodeCoverage` | Supported | Open source, Win32/Win64, MAP-file based |
-| `radCodeCoverage` | Supported | Shares DelphiCodeCoverage CLI conventions, adds markdown, and LCOV output |
+| `radCodeCoverage` | Supported | Shares DelphiCodeCoverage CLI conventions, adds markdown, LCOV, and covdb output |
 | `CoverageValidator` | Future | Commercial (Software Verify) |
 
 ---
@@ -179,9 +179,21 @@ when specifying multiple formats.
 | `lcov` | LCOV tracefile format (for Codecov, Coveralls, genhtml) |
 | `cobertura` | Cobertura XML format (for CI tools) |
 | `md` | Markdown coverage report |
+| `covdb` | SQLite coverage database (radCodeCoverage only) |
 
 ```powershell
 delphi-coverage -Execute test.exe -MapFile test.map -Formats html,lcov,md
+```
+
+The `covdb` format produces a `coverage.db` SQLite database with three tables:
+- **metadata** -- key/value pairs (format_version, tool_name, run dates, exe/map paths, overall stats)
+- **files** -- one row per unit (file_name, sha256, total/covered lines, coverage_pct)
+- **lines** -- one row per instrumented line (file_id, line_number, hit_count)
+
+This format requires `-Engine radCodeCoverage`.
+
+```powershell
+delphi-coverage -Execute test.exe -MapFile test.map -Engine radCodeCoverage -Formats html,covdb
 ```
 
 ---

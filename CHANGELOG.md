@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [1.1.0] Unreleased
+
+- added `covdb` output format for radCodeCoverage SQLite database output (#1)
+- `covdb` produces a `coverage.db` file with metadata, files, and lines tables
+- validates that `covdb` format requires `-Engine radCodeCoverage`
+
+---
+
 ## [1.0.0] 2026-05-12
 
 - initial release with DelphiCodeCoverage and radCodeCoverage engine support
