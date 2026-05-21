@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+### [1.1.1] 2026-05-20
+
+- fix DCC engine argument escaping: prefix `-` with `^` in test arguments passed via `-a`
+[#2](https://github.com/continuous-delphi/delphi-coverage/issues/2)
+
+---
+
 ## [1.1.0] 2026-05-17
 
 - added `covdb` output format for radCodeCoverage SQLite database output (#1)

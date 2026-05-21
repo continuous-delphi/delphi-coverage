@@ -1,2 +1,5 @@
 # PowerShell test output
 tests/pwsh/results/*.xml
+
+# Session commit scripts
+tools/commit*

@@ -1,0 +1,44 @@
+# Tickets for the delphi-coverage project
+# Repo remote url: https://github.com/continuous-delphi/delphi-coverage
+# File used by create-github-issues.ps1
+# dev-automation-tooling script & document reference: C:\code\dev-automation-tooling
+
+---
+Title: DCC engine: escape test arguments with caret (^) for DelphiCodeCoverage.exe
+Issue: #2
+Status: closed
+Labels: bug
+Body:
+## Problem
+
+The DelphiCodeCoverage engine passes test arguments (`-a`) to
+`DelphiCodeCoverage.exe` without escaping them. The executable uses `^` as
+its escape character -- any `-` in a test argument must be prefixed with `^`
+so the engine's own argument parser does not treat them as engine flags.
+
+For example, test arguments `-b -a` must be escaped as `^-b ^-a` before
+being passed via the `-a` parameter.
+
+The escaping logic was prototyped in `Invoke-DelphiCodeCoverageEngine` and
+`Invoke-CoverageEngineDproj` (both in `source/delphi-coverage.ps1`) but is
+currently commented out with the note "Skip escaping as a test".
+
+## Affected code
+
+- `Invoke-DelphiCodeCoverageEngine` -- lines ~283-290
+- `Invoke-CoverageEngineDproj` -- line ~382
+
+Both locations build the `-a` argument list and need the same fix.
+
+## Expected behavior
+
+When `TestArguments` contains values like `-b`, `--cm:off`, the engine
+should emit `-a "^-b ^-^-cm:off"` so that `DelphiCodeCoverage.exe`
+forwards the correct flags to the application under test.
+
+Acceptance criteria:
+- [ ] Caret escaping is enabled for all `-` characters in test arguments
+- [ ] Both `Invoke-DelphiCodeCoverageEngine` and `Invoke-CoverageEngineDproj` apply the escaping
+- [ ] Commented-out prototype code is removed
+- [ ] Existing Pester tests pass (or are updated if they assert on unescaped output)
+

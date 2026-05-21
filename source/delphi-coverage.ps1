@@ -144,7 +144,7 @@ $ExitFileNotFound     = 4
 $ExitCoverageFailed   = 5
 $ExitThresholdNotMet  = 6
 
-$script:ToolVersion = '1.1.0'
+$script:ToolVersion = '1.1.1'
 
 # -----------------------------------------------------------------------------
 # Version info
@@ -281,12 +281,10 @@ function Invoke-DelphiCodeCoverageEngine {
     }
 
     if ($TestArguments.Count -gt 0) {
-        ### Skip escaping as a test
-        ### # CodeCoverage uses ^ as escape character for arguments.
-        ### # Prefix - with ^ so -b becomes ^-b, --cm:off becomes ^-^-cm:off
-        ### $escaped = $TestArguments | ForEach-Object { $_ -replace '-', '^-' }
-        ### $engineArgs.Add("-a `"$($escaped -join ' ')`"")
-        $engineArgs.Add("-a `"$($TestArguments -join ' ')`"")
+        # CodeCoverage uses ^ as escape character for arguments.
+        # Prefix - with ^ so -b becomes ^-b, --cm:off becomes ^-^-cm:off
+        $escaped = $TestArguments | ForEach-Object { $_ -replace '-', '^-' }
+        $engineArgs.Add("-a `"$($escaped -join ' ')`"")
     }
 
     # Ensure output directory exists
@@ -328,6 +326,7 @@ function Invoke-CoverageEngineDproj {
     #>
     param(
         [string]$EngineBinary,
+        [string]$EngineName,
         [string]$DprojFile,
         [string[]]$CoverageSourceDir = @(),
         [string[]]$CoverageUnits,
@@ -379,7 +378,14 @@ function Invoke-CoverageEngineDproj {
     }
 
     if ($TestArguments.Count -gt 0) {
-        $engineArgs.Add("-a `"$($TestArguments -join ' ')`"")
+        if ($EngineName -eq 'DelphiCodeCoverage') {
+            # CodeCoverage uses ^ as escape character for arguments.
+            # Prefix - with ^ so -b becomes ^-b, --cm:off becomes ^-^-cm:off
+            $escaped = $TestArguments | ForEach-Object { $_ -replace '-', '^-' }
+            $engineArgs.Add("-a `"$($escaped -join ' ')`"")
+        } else {
+            $engineArgs.Add("-a `"$($TestArguments -join ' ')`"")
+        }
     }
 
     # Ensure output directory exists
@@ -736,6 +742,7 @@ try {
     if ($useDproj) {
         $engineResult = Invoke-CoverageEngineDproj `
             -EngineBinary       $engineBinary `
+            -EngineName         $Engine `
             -DprojFile          $Dproj `
             -CoverageSourceDir  $resolvedSourceDirs `
             -CoverageUnits      $resolvedUnits `
