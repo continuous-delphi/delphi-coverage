@@ -42,3 +42,51 @@ Acceptance criteria:
 - [ ] Commented-out prototype code is removed
 - [ ] Existing Pester tests pass (or are updated if they assert on unescaped output)
 
+---
+Title: DCC engine: auto-discover units from MAP file when -Units not specified
+Issue: #3
+Status: closed
+Labels: enhancement
+Body:
+## Problem
+
+When using the same parameters for both engines, radCodeCoverage reports
+coverage percentages while DelphiCodeCoverage reports 0%. This is because
+DelphiCodeCoverage requires an explicit list of units via `-u` to know
+what to instrument -- without it, nothing is measured.
+
+This forces users to maintain a separate `-Units` list for DCC that
+radCodeCoverage does not need, making the two engines non-interchangeable.
+
+## Proposed solution
+
+When the engine is `DelphiCodeCoverage` and the user has not supplied
+`-Units`, parse the MAP file for unit names and pass them all via `-u`.
+
+The MAP file contains `Line numbers for <QualifiedName>(<FileName>)`
+sections for every unit. These are already validated by `Test-DetailedMapFile`.
+Extracting the unit list is straightforward:
+
+```powershell
+$units = Get-Content -LiteralPath $MapFile |
+    Where-Object { $_ -match '^Line numbers for (.+)\(' } |
+    ForEach-Object { $Matches[1] }
+```
+
+This makes DCC behave like radCodeCoverage out of the box -- instrument
+everything, then let `-ExcludeUnits` / `-uf` narrow it down. If the user
+provides an explicit `-Units` list, it takes precedence (no auto-discovery).
+
+## Affected code
+
+- `Invoke-DelphiCodeCoverageEngine` in `source/delphi-coverage.ps1` --
+  add unit auto-discovery before building the `-u` arguments
+- Possibly a new helper function for MAP file parsing
+
+Acceptance criteria:
+- [ ] DCC engine auto-discovers units from the MAP file when `-Units` is empty
+- [ ] Explicit `-Units` values override auto-discovery
+- [ ] `-ExcludeUnits` / `-uf` still works alongside auto-discovered units
+- [ ] radCodeCoverage behavior is unchanged
+- [ ] Pester tests cover the MAP parsing logic
+

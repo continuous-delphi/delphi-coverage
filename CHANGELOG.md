@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 
 - fix DCC engine argument escaping: prefix `-` with `^` in test arguments passed via `-a`
 [#2](https://github.com/continuous-delphi/delphi-coverage/issues/2)
+- DCC engine auto-discovers units from MAP file when `-Units` not specified
+[#3](https://github.com/continuous-delphi/delphi-coverage/issues/3)
 
 ---
 

@@ -650,6 +650,21 @@ function Test-DetailedMapFile {
     return $content -match 'Line numbers for'
 }
 
+function Get-MapFileUnits {
+    <#
+    .SYNOPSIS
+        Extracts unit names from a detailed MAP file.
+        Returns the qualified names from 'Line numbers for <Name>(<File>)' sections.
+    #>
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '', Justification='Units is a Delphi term of art, not a plural noun.')]
+    param([string]$Path)
+
+    $units = Get-Content -LiteralPath $Path |
+        Where-Object { $_ -match '^\s*Line numbers for (.+)\(' } |
+        ForEach-Object { $Matches[1] }
+    return @($units | Select-Object -Unique)
+}
+
 # -----------------------------------------------------------------------------
 # Main
 # -----------------------------------------------------------------------------
@@ -736,6 +751,15 @@ try {
     $resolvedSourceDirs  = @(if (-not [string]::IsNullOrEmpty($SourceDir))    { $SourceDir -split ',' }    else { @() })
     $resolvedUnits       = @(if (-not [string]::IsNullOrEmpty($Units))        { $Units -split ',' }        else { @() })
     $resolvedExclude     = @(if (-not [string]::IsNullOrEmpty($ExcludeUnits)) { $ExcludeUnits -split ',' } else { @() })
+
+    # DCC requires explicit -u units to instrument. When the user hasn't
+    # specified -Units and we have a MAP file, auto-discover the unit list.
+    if ($Engine -eq 'DelphiCodeCoverage' -and $resolvedUnits.Count -eq 0 -and -not $useDproj) {
+        $resolvedUnits = Get-MapFileUnits -Path $MapFile
+        if ($resolvedUnits.Count -gt 0) {
+            Write-Host "Auto-discovered $($resolvedUnits.Count) units from MAP file"
+        }
+    }
 
     # Run the coverage engine
     $engineResult = $null
